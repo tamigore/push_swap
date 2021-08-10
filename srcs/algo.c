@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algo.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: user42 <tamigore@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/10 17:50:52 by user42            #+#    #+#             */
+/*   Updated: 2021/08/10 22:31:22 by user42           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void		get_unified_pile(t_pile *lst)
@@ -33,7 +45,7 @@ void		get_unified_pile(t_pile *lst)
 	free(uni);
 }
 
-int			check(t_pile *lst)
+int			check_all(t_pile *lst)
 {
 	int		i;
 
@@ -49,24 +61,25 @@ int			check(t_pile *lst)
 	return(1);
 }
 
-void		tri_min(t_pile *lst)
+int			check_pile(int *p, int max)
 {
-	if (check(lst))
-		return ;
-	if (lst->max_a == 2)
+	int		i;
+	int		j;
+
+	i = 0;
+	if (!p)
+		return (0);
+	j = p[0];
+	while (i < max)
 	{
-		lst->res[lst->index++] = swap_a(lst);
-		return ;
+		if (p[i] != j++)
+			return (0);
+		i++;
 	}
-	else if (lst->max_a == 3)
-	{
-		
-	}
-	lst->res[lst->index++] = push_a(lst);
-	lst->res[lst->index++] = push_a(lst);
-	if ()
+	return(1);
 }
 
+/*
 void		tri_mid(t_pile *lst)
 {
 }
@@ -74,14 +87,21 @@ void		tri_mid(t_pile *lst)
 void		tri_max(t_pile *lst)
 {
 }
-
+*/
 void		get_best_res(t_pile *lst)
 {
 	get_unified_pile(lst);
+	if (check_all(lst))
+	{
+		printf("the pile is already in order");
+		return ;
+	}
 	if (lst->max_a <= 5)
 		tri_min(lst);
-	else if (lst->max_a <= 100)
+	else
+		omg_tri(lst);
+/*	else if (lst->max_a <= 100)
 		tri_mid(lst);
 	else
 		tri_max(lst);
-}
+*/}

@@ -1,16 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: user42 <tamigore@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/10 17:55:56 by user42            #+#    #+#             */
+/*   Updated: 2021/08/10 22:27:53 by user42           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void		exit_err(void *ptr, char *str)
+void			exit_err(void *ptr, char *str)
 {
 	if (ptr)
 		free(ptr);
 	printf("%s", str);
 }
 
-t_pile		*init_pile(int ac, char **av)
+t_pile			*init_pile(int ac, char **av)
 {
-	t_pile	*lst;
-	int		i;
+	t_pile		*lst;
+	int			i;
 
 	lst = (t_pile *)malloc(sizeof(t_pile));
 	if (!lst)
@@ -44,9 +56,9 @@ t_pile		*init_pile(int ac, char **av)
 	return (lst);
 }
 
-void		print_pile(t_pile *lst)
+void			print_pile(t_pile *lst)
 {
-	int		i;
+	int			i;
 
 	i = 0;
 	if (!lst)
@@ -66,14 +78,42 @@ void		print_pile(t_pile *lst)
 	i = 0;
 	while (i < lst->index)
 	{
-		printf("res[%d] : %d\n", i, lst->res[i]);
+		printf("res[%d] : %s\n", i, revers_act(lst->res[i]));
 		i++;
 	}
 }
 
-int			main(int ac, char **av)
+char			*revers_act(int nb)
 {
-	t_pile	*lst;
+	if (nb == 0)
+		return ("sa");
+	else if (nb == 1)
+		return ("sb");
+	else if (nb == 2)
+		return ("ss");
+	else if (nb == 3)
+		return ("pa");
+	else if (nb == 4)
+		return ("pb");
+	else if (nb == 5)
+		return ("ra");
+	else if (nb == 6)
+		return ("rb");
+	else if (nb == 7)
+		return ("rr");
+	else if (nb == 8)
+		return ("rra");
+	else if (nb == 9)
+		return ("rrb");
+	else if (nb == 10)
+		return ("rrr");
+	exit_err(NULL, "Bug with act");
+	return (NULL);
+}
+
+int				main(int ac, char **av)
+{
+	t_pile		*lst;
 
 	if (ac < 2)
 		exit_err(NULL, "Error : Not enough arguments.");

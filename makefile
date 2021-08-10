@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: tamigore <tamigore@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/19 16:16:11 by tamigore          #+#    #+#              #
-#    Updated: 2020/03/11 17:56:50 by tamigore         ###   ########.fr        #
+#    Updated: 2021/08/10 22:25:34 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,9 @@ HEADER = includes/
 SOURCES =	main.c		\
 			revers.c	\
 			swap.c		\
-			algo.c
+			algo.c		\
+			tri_min.c	\
+			omg_tri.c
 
 SRCS = $(addprefix $(DIR_S),$(SOURCES))
 
