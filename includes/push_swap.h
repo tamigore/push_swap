@@ -10,18 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: user42 <tamigore@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/10 18:08:52 by user42            #+#    #+#             */
+/*   Updated: 2021/08/13 22:29:31 by user42           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef __PUSH_SWAP_H__
 # define __PUSH_SWAP_H__
 
 # include <stdlib.h>
 # include <stdio.h>
 # include "libft.h"
-
-typedef	enum	s_bool
-{
-	false,
-	true
-}				t_bool;
 
 typedef	enum	s_act
 {
@@ -40,10 +46,11 @@ typedef	enum	s_act
 
 typedef	struct	s_pile
 {
-	t_bool		valid;
+	int			valid;
 	int			*a;
 	int			*b;
 	int			*res;
+	int			op[10];
 	int			index;
 	int			max_a;
 	int			max_b;
@@ -63,16 +70,23 @@ int				rrevers_b(t_pile *lst);
 int				rrevers_r(t_pile *lst);
 
 void			get_unified_pile(t_pile *lst);
-void			get_best_res(t_pile *lst);
+void			solve(t_pile *lst);
 int				check_all(t_pile *lst);
 int				check_pile(int *p, int max);
 
-int				get_placement(t_pile *lst, int nb);
+int				get_placement(int *a, int nb, int max_a);
 void			tri_min(t_pile *lst);
 
 void			omg_tri(t_pile *lst);
 
-void			exit_err(void *ptr, char *str);
+void			exit_err(t_pile *lst);
 char			*revers_act(int nb);
 void			print_pile(t_pile *lst);
+
+/*
+** init.c
+*/
+
+t_pile			*init_pile(int ac, char **av);
+
 #endif

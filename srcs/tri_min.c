@@ -89,19 +89,56 @@ static	void	insert_nb5(t_pile *lst, int i)
 	}
 }
 
-
-int				get_placement(t_pile *lst, int nb)
+int				nb_coup(int *a, int i, int max, int sens)
 {
-	int			i;
+	int			nb;
 
-	i = 0;
-	while (lst->a[i] < lst->max_a && lst->a[i] < nb)
-		i++;
-	return (i);
+	nb = 1;
+	if (sens > 0)
+	{
+		while (i > 0)
+			nb++;
+	}
+	else
+	{
+		
+	}
+	return (-1);
 }
 
 void			tri_min(t_pile *lst)
 {
+	int		i;
+	int		j;
+	int		res_i;
+	int		res_j;
+
+	i = 0;
+	j = lst->max_a - 1;
+	res_i = 0;
+	res_j = 0;
+	while (i < lst->max_a / 2)
+	{
+		if (lst->a[i] != i)
+		{
+			res_i = nb_coup(lst->a, i, lst->max_a, 1);
+			break ;
+		}
+		i++;
+	}
+	while (j >= lst->max_a / 2)
+	{
+		if (lst->a[j] != j)
+		{
+			res_i = nb_coup(lst->a, i, lst->max_a, -1);
+			break ;
+		}
+		i++;
+	}
+	res_i = res_j > res_i ? res_i : res_j;
+	if (a[i])
+
+/*
 	if (lst->max_a == 2)
 	{
 		lst->res[lst->index++] = swap_a(lst);
@@ -116,12 +153,12 @@ void			tri_min(t_pile *lst)
 	{
 		lst->res[lst->index++] = push_a(lst);
 		tri_3(lst);
-		insert_nb4(lst, get_placement(lst, lst->b[0]));
+		insert_nb4(lst, get_placement(lst->a, lst->b[0], lst->max_a));
 		return ;
 	}
 	lst->res[lst->index++] = push_a(lst);
 	lst->res[lst->index++] = push_a(lst);
 	tri_3(lst);
-	insert_nb4(lst, get_placement(lst, lst->b[0]));
-	insert_nb5(lst, get_placement(lst, lst->b[0]));
+	insert_nb4(lst, get_placement(lst->a, lst->b[0], lst->max_a));
+	insert_nb5(lst, get_placement(lst->a, lst->b[0], 
 }

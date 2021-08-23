@@ -6,7 +6,7 @@
 #    By: tamigore <tamigore@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/19 16:16:11 by tamigore          #+#    #+#              #
-#    Updated: 2021/08/10 22:25:34 by user42           ###   ########.fr        #
+#    Updated: 2021/08/23 12:21:24 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SOURCES =	main.c		\
 			swap.c		\
 			algo.c		\
 			tri_min.c	\
-			omg_tri.c
+			init.c
 
 SRCS = $(addprefix $(DIR_S),$(SOURCES))
 

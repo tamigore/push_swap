@@ -6,11 +6,21 @@
 /*   By: user42 <tamigore@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 17:50:52 by user42            #+#    #+#             */
-/*   Updated: 2021/08/10 22:31:22 by user42           ###   ########.fr       */
+/*   Updated: 2021/08/23 12:22:37 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int				get_placement(int *a, int nb, int max_a)
+{
+	int			i;
+
+	i = 0;
+	while (i < max_a && a[i] < nb)
+		i++;
+	return (i);
+}
 
 void		get_unified_pile(t_pile *lst)
 {
@@ -22,7 +32,7 @@ void		get_unified_pile(t_pile *lst)
 	j = 0;
 	uni = (int *)malloc(sizeof(int) * lst->max_a);
 	if (!uni)
-		exit_err(lst, "Memory Error");
+		exit_err(lst);
 	while (j < lst->max_a)
 	{
 		i = 0;
@@ -45,57 +55,11 @@ void		get_unified_pile(t_pile *lst)
 	free(uni);
 }
 
-int			check_all(t_pile *lst)
-{
-	int		i;
-
-	i = 0;
-	if (lst->max_b != 0)
-		return (0);
-	while (i < lst->max_a)
-	{
-		if (lst->a[i] != i)
-			return (0);
-		i++;
-	}
-	return(1);
-}
-
-int			check_pile(int *p, int max)
-{
-	int		i;
-	int		j;
-
-	i = 0;
-	if (!p)
-		return (0);
-	j = p[0];
-	while (i < max)
-	{
-		if (p[i] != j++)
-			return (0);
-		i++;
-	}
-	return(1);
-}
-
-/*
-void		tri_mid(t_pile *lst)
-{
-}
-
-void		tri_max(t_pile *lst)
-{
-}
-*/
-void		get_best_res(t_pile *lst)
+void		solve(t_pile *lst)
 {
 	get_unified_pile(lst);
 	if (check_all(lst))
-	{
-		printf("the pile is already in order");
 		return ;
-	}
 	if (lst->max_a <= 5)
 		tri_min(lst);
 	else

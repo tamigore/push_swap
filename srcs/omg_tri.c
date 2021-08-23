@@ -12,6 +12,89 @@
 
 #include "push_swap.h"
 
+void			add_operation(t_pile *lst, int *op, int i)
+{
+	int			j;
+	int			nb;
+
+	j = 0;
+	nb = 0;
+	while (j < i)
+	{
+		if (check_pile(lst->a, lst->max_a))
+			break ;
+		if (op[j] == 0)
+			nb = swap_a(lst);
+		else if (op[j] == 1)
+			nb = swap_b(lst);
+		else if (op[j] == 2)
+			nb = swap_s(lst);
+		else if (op[j] == 3)
+			nb = push_a(lst);
+		else if (op[j] == 4)
+			nb = push_b(lst);
+		else if (op[j] == 5)
+			nb = revers_a(lst);
+		else if (op[j] == 6)
+			nb = revers_b(lst);
+		else if (op[j] == 7)
+			nb = revers_r(lst);
+		else if (op[j] == 8)
+			nb = rrevers_a(lst);
+		else if (op[j] == 9)
+			nb = rrevers_b(lst);
+		else if (op[j] == 10)
+			nb = rrevers_r(lst);
+		else
+			exit_err(lst);
+		lst->res[lst->index++] = nb;
+		j++;
+	}
+}
+
+void			get_best_op(t_pile * lst)
+{
+	int			i;
+	int			nb;
+	int			tmp;
+
+	i = 0;
+	while (i < lst->max_a)
+	{
+		if (i != a[i])
+		{
+			if (i > 3 && i < lst->max_a - 4)
+				i++;
+			else
+				tmp = i < lst->max_a / 2 ? 1 : -1
+		}
+		res_tmp()
+		i++;
+	}
+}
+
+void			omg_tri(t_pile *lst)
+{
+	int			*op;
+	int			i;
+
+	op = (int *)malloc(sizeof(int) * lst->max_a);
+	if (!op)
+		exit_err(lst);
+	while (!check_pile(lst->a, lst->max_a)) //&& !check_pile(lst->b, lst->max_b))
+	{
+		i = 0;
+		while (lst->a[j] > i)
+			j++;
+		if ()
+		add_operation(lst, op, i);
+	}
+	while (lst->max_b > 0)
+		lst->res[lst->index++] = push_b(lst);
+	free(op);
+}
+
+/*
 void			omg_tri(t_pile *lst)
 {
 	int			*op;
@@ -144,3 +227,4 @@ void			omg_tri(t_pile *lst)
 		// TRI B
 	}
 }
+*/
