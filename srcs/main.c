@@ -33,24 +33,28 @@ void			print_pile(t_pile *lst)
 	i = 0;
 	if (!lst)
 		exit_err(NULL);
-	printf("Valid : %d\nMax_a : %d\nMax_b : %d\n", lst->valid, lst->max_a, lst->max_b);
+	printf("///////////////////PRINT_PILE///////////////////\n");
+	printf("Valid : %d\nMax_a : %d\nMax_b : %d\nPile A:\n", lst->valid, lst->max_a, lst->max_b);
 	while (i < lst->max_a)
 	{
 		printf("pile a[%d] : %d\n", i, lst->a[i]);
 		i++;
 	}
 	i = 0;
+	printf("Pile B:\n");
 	while (i < lst->max_b)
 	{
 		printf("pile b[%d] : %d\n", i, lst->b[i]);
 		i++;
 	}
 	i = 0;
+	printf("Resultat :\n");
 	while (i < lst->index)
 	{
 		printf("res[%d] : %s\n", i, revers_act(lst->res[i]));
 		i++;
 	}
+	printf("////////////////////////////////////////////////\n");
 }
 
 char			*revers_act(int nb)
@@ -84,7 +88,7 @@ char			*revers_act(int nb)
 
 int				main(int ac, char **av)
 {
-		t_pile		*lst;
+	t_pile		*lst;
 	int			i;
 
 	if (ac < 2)

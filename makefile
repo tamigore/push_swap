@@ -24,8 +24,10 @@ SOURCES =	main.c		\
 			revers.c	\
 			swap.c		\
 			algo.c		\
-			tri_min.c	\
-			init.c
+			init.c		\
+			check.c		\
+			sort.c		\
+			sort_min.c
 
 SRCS = $(addprefix $(DIR_S),$(SOURCES))
 

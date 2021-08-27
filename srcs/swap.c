@@ -39,10 +39,12 @@ int				swap_s(t_pile *lst)
 	return (ss);
 }
 
-int				push_a(t_pile *lst)
+int				push_b(t_pile *lst)
 {
 	int			i;
 
+	if (lst->max_a == 0)
+		return (-1);
 	i = lst->max_b - 1;
 	while (i >= 0)
 	{
@@ -58,13 +60,15 @@ int				push_a(t_pile *lst)
 	}
 	lst->max_a--;
 	lst->max_b++;
-	return (pa);
+	return (pb);
 }
 
-int				push_b(t_pile *lst)
+int				push_a(t_pile *lst)
 {
 	int			i;
 
+	if (lst->max_b == 0)
+		return (-1);
 	i = lst->max_a - 1;
 	while (i >= 0)
 	{
@@ -80,5 +84,5 @@ int				push_b(t_pile *lst)
 	}
 	lst->max_a++;
 	lst->max_b--;
-	return (pb);
+	return (pa);
 }

@@ -12,16 +12,6 @@
 
 #include "push_swap.h"
 
-int				get_placement(int *a, int nb, int max_a)
-{
-	int			i;
-
-	i = 0;
-	while (i < max_a && a[i] < nb)
-		i++;
-	return (i);
-}
-
 void		get_unified_pile(t_pile *lst)
 {
 	int		nb;
@@ -60,12 +50,9 @@ void		solve(t_pile *lst)
 	get_unified_pile(lst);
 	if (check_all(lst))
 		return ;
-	if (lst->max_a <= 5)
-		tri_min(lst);
-	else
-		omg_tri(lst);
-/*	else if (lst->max_a <= 100)
-		tri_mid(lst);
-	else
-		tri_max(lst);
-*/}
+//	print_pile(lst);
+	//if (lst->max_a <= 10)
+	sort_min(lst);
+	//else
+	//	push_swap_sort(lst);
+}

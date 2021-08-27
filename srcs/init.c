@@ -27,7 +27,7 @@ static long long int		push_swap_atoi(t_pile *lst, int *a, char *str)
 	test = i;
 	while (str[test])
 	{
-		if (str[test] < '0' || str[test] > '9')
+		if ((str[test] < '0' || str[test] > '9') && str[test] != '-')
 		{
 			free(a);
 			exit_err(lst);
@@ -48,7 +48,7 @@ static long long int		push_swap_atoi(t_pile *lst, int *a, char *str)
 	return (nb * neg);
 }
 
-int				*init_a(t_pile *lst, int ac, char **av)
+static int		*init_a(t_pile *lst, int ac, char **av)
 {
 	int			*a;
 	int			i;
@@ -99,7 +99,7 @@ t_pile			*init_pile(int ac, char **av)
 		free(lst->a);
 		exit_err(lst);
 	}
-	lst->res = (int *)malloc(sizeof(int) * lst->max_a * 4);
+	lst->res = (int *)malloc(sizeof(int) * lst->max_a * 5);
 	if (!lst->res)
 	{
 		free(lst->b);
@@ -108,6 +108,6 @@ t_pile			*init_pile(int ac, char **av)
 	}
 	ft_bzero(lst->op, 10);
 	ft_bzero(lst->b, lst->max_a);
-	ft_bzero(lst->res, lst->max_a * 4);
+	ft_bzero(lst->res, lst->max_a * 5);
 	return (lst);
 }
