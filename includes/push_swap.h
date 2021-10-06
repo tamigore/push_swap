@@ -32,13 +32,20 @@ typedef	enum		s_act
 	rrr// 10
 }					t_act;
 
+typedef struct		s_pos
+{
+	int		check;
+	int		x;
+	int		y;
+}					t_pos;
+
 typedef	struct		s_pile
 {
 	int				valid;
 	int				*a;
 	int				*b;
 	int				*res;
-	int				op[10];
+	struct s_pos	pos;
 	int				index;
 	int				max_a;
 	int				max_b;
@@ -71,6 +78,7 @@ int					rrevers_r(t_pile *lst);
 
 void				get_unified_pile(t_pile *lst);
 void				solve(t_pile *lst);
+void				put_res(t_pile *lst, int (*fun)(t_pile *lst));
 
 /*
 ** check.c
@@ -111,9 +119,12 @@ t_pile				*init_pile(int ac, char **av);
 ** sort.c
 */
 
-int					track(t_pile *lst, int *min);
-void				track_b(t_pile *lst, int pose, int *min, int max);
-void				track_a(t_pile *lst, int *min);
-void				push_swap_sort(t_pile *lst);
+void				sort(t_pile *lst);
+
+/*
+** track.c
+*/
+
+void				track(t_pile *lst, int *min);
 
 #endif

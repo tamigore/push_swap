@@ -37,24 +37,24 @@ void			print_pile(t_pile *lst)
 	printf("Valid : %d\nMax_a : %d\nMax_b : %d\nPile A:\n", lst->valid, lst->max_a, lst->max_b);
 	while (i < lst->max_a)
 	{
-		printf("pile a[%d] : %d\n", i, lst->a[i]);
+		printf("a[%d] : %d || ", i, lst->a[i]);
 		i++;
 	}
 	i = 0;
-	printf("Pile B:\n");
+	printf("\nPile B:\n");
 	while (i < lst->max_b)
 	{
-		printf("pile b[%d] : %d\n", i, lst->b[i]);
+		printf("b[%d] : %d || ", i, lst->b[i]);
 		i++;
 	}
 	i = 0;
-	printf("Resultat :\n");
+	printf("\nResultat :\n");
 	while (i < lst->index)
 	{
-		printf("res[%d] : %s\n", i, revers_act(lst->res[i]));
+		printf("r[%d] : %s || ", i, revers_act(lst->res[i]));
 		i++;
 	}
-	printf("////////////////////////////////////////////////\n");
+	printf("\n////////////////////////////////////////////////\n");
 }
 
 char			*revers_act(int nb)
@@ -94,8 +94,10 @@ int				main(int ac, char **av)
 	if (ac < 2)
 		exit(0);
 	lst = init_pile(ac, av);
+	ft_putstr("bug...\n");
 //	print_pile(lst);
 	solve(lst);
+	ft_putstr("good ?\n");
 //	print_pile(lst);
 	i = 0;
 	while (i < lst->index)

@@ -27,7 +27,8 @@ SOURCES =	main.c		\
 			init.c		\
 			check.c		\
 			sort.c		\
-			sort_min.c
+			sort_min.c	\
+			track.c
 
 SRCS = $(addprefix $(DIR_S),$(SOURCES))
 
