@@ -38,25 +38,25 @@ void		get_unified_pile(t_pile *lst)
 		lst->a[i] = lst->b[i];
 		i++;
 	}
-	ft_memset(lst->b, 0, lst->max_a);
+	ft_bzero(lst->b, lst->max_a);
 }
 
 void		put_res(t_pile *lst, int (*fun)(t_pile *lst))
 {
 	int		i;
 
-	if (lst->index == BUFFER_SIZE)
+	if (lst->index == BUFFER_SIZE - 1)
 	{
 		i = 0;
-		while (i <= lst->index)
+		while (i < lst->index)
 		{
 			ft_putstr(revers_act(lst->res[i++]));
 			ft_putstr("\n");
 		}
 		lst->index = 0;
+		ft_bzero(lst->res, BUFFER_SIZE);
 	}
-	else
-		lst->res[lst->index++] = fun(lst);
+	lst->res[lst->index++] = fun(lst);
 }
 
 /*
@@ -72,13 +72,24 @@ int			get_opti(t_pile *lst, int x, int y)
 */
 void		solve(t_pile *lst)
 {
-	ft_putstr("no\n");
+	int		i;
+
 	get_unified_pile(lst);
-	ft_putstr("yes\n");
+//	print_pile(lst);
 	if (check_all(lst))
 		return ;
 	if (lst->max_a <= 10)
 		sort_min(lst);
 	else
 		sort(lst);
+	if (lst->index < BUFFER_SIZE)
+	{
+		i = 0;
+		while (i < lst->index)
+		{
+			ft_putstr(revers_act(lst->res[i++]));
+			ft_putstr("\n");
+		}
+	}
+//	print_pile(lst);
 }

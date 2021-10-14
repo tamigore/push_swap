@@ -1,19 +1,19 @@
 #include "push_swap.h"
 
-void		track(t_pile *lst, int *min)
+void		track(t_pile *lst, int *min, int max)
 {
 	int			i;
 
 	i = 0;
 	lst->pos.check = 0;
-	while (i < lst->max_a - *min)
+	while (i < lst->max_a)
 	{
 		if (lst->a[i] == *min)
 		{
 			if (i == lst->max_a - 1)
 			{
 				(*min)++;
-				track(lst, min);
+				track(lst, min, max);
 			}
 			lst->pos.x = i;
 		}
@@ -39,7 +39,7 @@ void		track(t_pile *lst, int *min)
 	{
 		if (lst->pos.x - lst->max_a < lst->max_b / 2)
 		{
-			if (lst->pos.y < lst->pos.x)
+			if (lst->pos.y < lst->pos.x && lst->pos.y >= lst->max_a)
 			{
 				lst->pos.check = 1;
 				lst->pos.y -= lst->max_a;
@@ -54,6 +54,6 @@ void		track(t_pile *lst, int *min)
 			}
 		}
 	}
-	if (lst->max_b == 0 && *min == lst->max_a - 1)
+	if (*min == max - 1 || max)
 		lst->pos.check = 0;
 }

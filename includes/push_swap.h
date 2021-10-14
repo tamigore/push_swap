@@ -125,6 +125,6 @@ void				sort(t_pile *lst);
 ** track.c
 */
 
-void				track(t_pile *lst, int *min);
+void				track(t_pile *lst, int *min, int max);
 
 #endif

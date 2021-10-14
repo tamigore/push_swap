@@ -70,10 +70,7 @@ static int		*init_a(t_pile *lst, int ac, char **av)
 		while (j < ac - 1)
 		{
 			if ((a[i] == a[j]) && i != j)
-			{
-				free(a);
 				exit_err(lst);
-			}
 			j++;
 		}
 		i++;
@@ -95,18 +92,11 @@ t_pile			*init_pile(int ac, char **av)
 	lst->a = init_a(lst, ac, av);
 	lst->b = (int *)malloc(sizeof(int) * lst->max_a);
 	if (!lst->b)
-	{
-		free(lst->a);
 		exit_err(lst);
-	}
-	lst->res = (int *)malloc(sizeof(int) * BUFFER_SIZE);
+	lst->res = (int *)malloc(sizeof(int) * (BUFFER_SIZE));
 	if (!lst->res)
-	{
-		free(lst->b);
-		free(lst->a);
 		exit_err(lst);
-	}
 	ft_bzero(lst->b, lst->max_a);
-	ft_bzero(lst->res, lst->max_a * 5);
+	ft_bzero(lst->res, BUFFER_SIZE);
 	return (lst);
 }

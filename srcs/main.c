@@ -89,21 +89,12 @@ char			*revers_act(int nb)
 int				main(int ac, char **av)
 {
 	t_pile		*lst;
-	int			i;
 
 	if (ac < 2)
 		exit(0);
 	lst = init_pile(ac, av);
-	ft_putstr("bug...\n");
 //	print_pile(lst);
 	solve(lst);
-	ft_putstr("good ?\n");
 //	print_pile(lst);
-	i = 0;
-	while (i < lst->index)
-	{
-		ft_putstr(revers_act(lst->res[i++]));
-		ft_putstr("\n");
-	}
 	return (0);
 }

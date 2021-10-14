@@ -17,16 +17,12 @@ static void	m_track_b(t_pile *lst, int pos, int *min)
 	if (pos > lst->max_b / 2)
 	{
 		while (lst->b[lst->max_b - 1] != *min)
-			ft_putstr(revers_act(rrevers_b(lst)));
-//			lst->res[lst->index++] = rrevers_b(lst);
+			put_res(lst, &rrevers_b);
 		if (lst->b[lst->max_b - 1] == *min)
 		{
-			ft_putstr(revers_act(rrevers_a(lst)));
-			ft_putstr(revers_act(push_a(lst)));
-			ft_putstr(revers_act(revers_a(lst)));
-//			lst->res[lst->index++] = rrevers_b(lst);
-//			lst->res[lst->index++] = push_a(lst);
-//			lst->res[lst->index++] = revers_a(lst);
+			put_res(lst, &rrevers_a);
+			put_res(lst, &push_a);
+			put_res(lst, &revers_a);
 			(*min)++;
 			return ;
 		}
@@ -34,25 +30,19 @@ static void	m_track_b(t_pile *lst, int pos, int *min)
 	else
 	{
 		while(lst->b[0] != *min && lst->b[1] != *min)
-			ft_putstr(revers_act(push_a(lst)));
-//			lst->res[lst->index++] = push_a(lst);
+			put_res(lst, &push_a);
 		if (lst->b[0] == *min)
 		{
-			ft_putstr(revers_act(push_a(lst)));
-			ft_putstr(revers_act(revers_a(lst)));
-//			lst->res[lst->index++] = push_a(lst);
-//			lst->res[lst->index++] = revers_a(lst);
+			put_res(lst, &push_a);
+			put_res(lst, &revers_a);
 			(*min)++;
 			return ;
 		}
 		else if (lst->b[1] == *min && lst->max_b >= 2)
 		{
-			ft_putstr(revers_act(swap_b(lst)));
-			ft_putstr(revers_act(push_a(lst)));
-			ft_putstr(revers_act(revers_a(lst)));
-//			lst->res[lst->index++] = swap_b(lst);
-//			lst->res[lst->index++] = push_a(lst);
-//			lst->res[lst->index++] = revers_a(lst);
+			put_res(lst, &swap_b);
+			put_res(lst, &push_a);
+			put_res(lst, &revers_a);
 			(*min)++;
 			return ;
 		}
@@ -62,20 +52,16 @@ static void	m_track_b(t_pile *lst, int pos, int *min)
 static void	m_track_a(t_pile *lst, int *min)
 {
 	while (lst->a[0] != *min && lst->a[1] != *min)
-		ft_putstr(revers_act(push_b(lst)));
-//		lst->res[lst->index++] = push_b(lst);
+		put_res(lst, &push_b);
 	if (lst->a[0] == *min)
 	{
-		ft_putstr(revers_act(revers_a(lst)));
-//		lst->res[lst->index++] = revers_a(lst);
+		put_res(lst, &revers_a);
 		(*min)++;
 	}
 	else if (lst->a[1] == *min)
 	{
-		ft_putstr(revers_act(swap_a(lst)));
-		ft_putstr(revers_act(revers_a(lst)));
-//		lst->res[lst->index++] = swap_a(lst);
-//		lst->res[lst->index++] = revers_a(lst);
+		put_res(lst, &swap_a);
+		put_res(lst, &revers_a);
 		(*min)++;
 	}
 }
@@ -89,11 +75,11 @@ void			sort_min(t_pile *lst)
 	max = lst->max_a;
 	while (lst->valid == 0)
 	{
-		track(lst, &min);
+		track(lst, &min, max);
 		if (lst->pos.x < lst->max_a)
 			m_track_a(lst, &min);
 		else
-			m_track_b(lst, lst->pos.x, &min);
+			m_track_b(lst, lst->pos.x - lst->max_a, &min);
 		if (min == max && check_all(lst))
 			lst->valid = 1;
 	}
