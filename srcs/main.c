@@ -93,8 +93,6 @@ int				main(int ac, char **av)
 	if (ac < 2)
 		exit(0);
 	lst = init_pile(ac, av);
-//	print_pile(lst);
 	solve(lst);
-//	print_pile(lst);
 	return (0);
 }

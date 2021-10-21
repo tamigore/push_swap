@@ -28,7 +28,8 @@ SOURCES =	main.c		\
 			check.c		\
 			sort.c		\
 			sort_min.c	\
-			track.c
+			track.c		\
+			radixsort.c
 
 SRCS = $(addprefix $(DIR_S),$(SOURCES))
 

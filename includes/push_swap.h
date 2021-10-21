@@ -127,4 +127,10 @@ void				sort(t_pile *lst);
 
 void				track(t_pile *lst, int *min, int max);
 
+/*
+** radixsort.c
+*/
+
+void				radixsort(t_pile *lst);
+
 #endif

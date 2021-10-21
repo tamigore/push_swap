@@ -59,29 +59,17 @@ void		put_res(t_pile *lst, int (*fun)(t_pile *lst))
 	lst->res[lst->index++] = fun(lst);
 }
 
-/*
-int			get_opti(t_pile *lst, int x, int y)
-{
-	int		i;
-	int		j;
-	int		nb;
-
-	nb = 0;
-	while ()
-}
-*/
 void		solve(t_pile *lst)
 {
 	int		i;
 
 	get_unified_pile(lst);
-//	print_pile(lst);
 	if (check_all(lst))
 		return ;
-	if (lst->max_a <= 10)
-		sort_min(lst);
-	else
+/*	if (lst->max_a <= 30)
 		sort(lst);
+	else
+*/		radixsort(lst);
 	if (lst->index < BUFFER_SIZE)
 	{
 		i = 0;
@@ -91,5 +79,4 @@ void		solve(t_pile *lst)
 			ft_putstr("\n");
 		}
 	}
-//	print_pile(lst);
 }

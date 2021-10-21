@@ -38,7 +38,7 @@ static void	m_track_b(t_pile *lst, int pos, int *min)
 			(*min)++;
 			return ;
 		}
-		else if (lst->b[1] == *min && lst->max_b >= 2)
+		else if (lst->max_b >= 2 && lst->b[1] == *min)
 		{
 			put_res(lst, &swap_b);
 			put_res(lst, &push_a);
