@@ -6,58 +6,44 @@
 /*   By: user42 <tamigore@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 17:55:56 by user42            #+#    #+#             */
-/*   Updated: 2021/08/10 22:27:53 by user42           ###   ########.fr       */
+/*   Updated: 2021/11/02 17:05:02 by tamigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void			exit_err(t_pile *lst)
+void	exit_err(t_pile *lst)
 {
-	if (lst->a)
-		free(lst->a);
-	if (lst->b)
-		free(lst->b);
-	if (lst->res)
-		free(lst->res);
 	if (lst)
+	{
+		if (lst->a)
+			free(lst->a);
+		if (lst->b)
+			free(lst->b);
+		if (lst->res)
+			free(lst->res);
 		free(lst);
+	}
 	ft_putstr("Error\n");
 	exit(EXIT_FAILURE);
 }
 
-void			print_pile(t_pile *lst)
+void	exit_valid(t_pile *lst)
 {
-	int			i;
-
-	i = 0;
-	if (!lst)
-		exit_err(NULL);
-	printf("///////////////////PRINT_PILE///////////////////\n");
-	printf("Valid : %d\nMax_a : %d\nMax_b : %d\nPile A:\n", lst->valid, lst->max_a, lst->max_b);
-	while (i < lst->max_a)
+	if (lst)
 	{
-		printf("a[%d] : %d || ", i, lst->a[i]);
-		i++;
+		if (lst->a)
+			free(lst->a);
+		if (lst->b)
+			free(lst->b);
+		if (lst->res)
+			free(lst->res);
+		free(lst);
 	}
-	i = 0;
-	printf("\nPile B:\n");
-	while (i < lst->max_b)
-	{
-		printf("b[%d] : %d || ", i, lst->b[i]);
-		i++;
-	}
-	i = 0;
-	printf("\nResultat :\n");
-	while (i < lst->index)
-	{
-		printf("r[%d] : %s || ", i, revers_act(lst->res[i]));
-		i++;
-	}
-	printf("\n////////////////////////////////////////////////\n");
+	exit(EXIT_SUCCESS);
 }
 
-char			*revers_act(int nb)
+char	*revers_act(int nb)
 {
 	if (nb == 0)
 		return ("sa");
@@ -81,18 +67,18 @@ char			*revers_act(int nb)
 		return ("rrb");
 	else if (nb == 10)
 		return ("rrr");
-	printf("nb = %d\n", nb);
 	exit_err(NULL);
 	return (NULL);
 }
 
-int				main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_pile		*lst;
+	t_pile	*lst;
 
 	if (ac < 2)
 		exit(0);
 	lst = init_pile(ac, av);
 	solve(lst);
+	exit_valid(lst);
 	return (0);
 }

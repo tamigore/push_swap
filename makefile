@@ -6,15 +6,15 @@
 #    By: tamigore <tamigore@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/19 16:16:11 by tamigore          #+#    #+#              #
-#    Updated: 2021/08/23 12:21:24 by user42           ###   ########.fr        #
+#    Updated: 2021/10/24 18:31:56 by tamigore         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+CC = clang
+
 NAME = push_swap
 
-LIB = lib/
-
-LIBFT = $(LIB)libft
+LIBFT = libft
 
 DIR_S = srcs/
 
@@ -27,9 +27,9 @@ SOURCES =	main.c		\
 			init.c		\
 			check.c		\
 			sort.c		\
-			sort_min.c	\
 			track.c		\
-			radixsort.c
+			radixsort.c	\
+			rrevers.c
 
 SRCS = $(addprefix $(DIR_S),$(SOURCES))
 
@@ -43,10 +43,10 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(HEADER)
 	make -C $(LIBFT)
-	gcc -g $(CFLAGS) $(OBJS) $(FLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(FLAGS) -o $(NAME)
 
 norme:
-	norminette ./$(LIB)
+	norminette ./$(LIBFT)
 	@echo
 	norminette ./$(HEADER)
 	@echo

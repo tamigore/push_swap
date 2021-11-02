@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-int			check_all(t_pile *lst)
+int	check_all(t_pile *lst)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	if (lst->max_b != 0)
@@ -25,13 +25,13 @@ int			check_all(t_pile *lst)
 			return (0);
 		i++;
 	}
-	return(1);
+	return (1);
 }
 
-int			check_pile(int *p, int max)
+int	check_pile(int *p, int max)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = p[0];
@@ -41,12 +41,12 @@ int			check_pile(int *p, int max)
 			return (0);
 		i++;
 	}
-	return(1);
+	return (1);
 }
 
-int			check_revers_pile(int *p, int max)
+int	check_revers_pile(int *p, int max)
 {
-	int		j;
+	int	j;
 
 	j = p[max];
 	while (max > 0)
@@ -55,5 +55,5 @@ int			check_revers_pile(int *p, int max)
 			return (0);
 		max--;
 	}
-	return(1);
+	return (1);
 }

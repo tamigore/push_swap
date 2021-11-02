@@ -10,36 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __PUSH_SWAP_H__
-# define __PUSH_SWAP_H__
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include <stdlib.h>
-# include <stdio.h>
 # include "libft.h"
 
-typedef	enum		s_act
+typedef enum s_act
 {
-	sa,// 0
-	sb,// 1
-	ss,// 2
-	pa,// 3
-	pb,// 4
-	ra,// 5
-	rb,// 6
-	rr,// 7
-	rra,// 8
-	rrb,// 9
-	rrr// 10
-}					t_act;
+	sa,
+	sb,
+	ss,
+	pa,
+	pb,
+	ra,
+	rb,
+	rr,
+	rra,
+	rrb,
+	rrr
+}	t_act;
 
-typedef struct		s_pos
+typedef struct s_pos
 {
 	int		check;
 	int		x;
 	int		y;
-}					t_pos;
+}	t_pos;
 
-typedef	struct		s_pile
+typedef struct s_pile
 {
 	int				valid;
 	int				*a;
@@ -49,7 +48,7 @@ typedef	struct		s_pile
 	int				index;
 	int				max_a;
 	int				max_b;
-}					t_pile;
+}	t_pile;
 
 /*
 ** swap.c
@@ -68,6 +67,11 @@ int					push_b(t_pile *lst);
 int					revers_a(t_pile *lst);
 int					revers_b(t_pile *lst);
 int					revers_r(t_pile *lst);
+
+/*
+** rrevers.c
+*/
+
 int					rrevers_a(t_pile *lst);
 int					rrevers_b(t_pile *lst);
 int					rrevers_r(t_pile *lst);
@@ -87,12 +91,6 @@ void				put_res(t_pile *lst, int (*fun)(t_pile *lst));
 int					check_all(t_pile *lst);
 int					check_pile(int *p, int max);
 int					check_revers_pile(int *p, int max);
-
-/*
-** tri_min.c
-*/
-
-void				sort_min(t_pile *lst);
 
 /*
 ** omg_tri.c
@@ -131,6 +129,6 @@ void				track(t_pile *lst, int *min, int max);
 ** radixsort.c
 */
 
-void				radixsort(t_pile *lst);
+void				radix_sort(t_pile *lst);
 
 #endif

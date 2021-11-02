@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-int				swap_a(t_pile *lst)
+int	swap_a(t_pile *lst)
 {
-	int			tmp;
+	int	tmp;
 
 	tmp = lst->a[0];
 	lst->a[0] = lst->a[1];
@@ -22,9 +22,9 @@ int				swap_a(t_pile *lst)
 	return (sa);
 }
 
-int				swap_b(t_pile *lst)
+int	swap_b(t_pile *lst)
 {
-	int			tmp;
+	int	tmp;
 
 	tmp = lst->b[0];
 	lst->b[0] = lst->b[1];
@@ -32,16 +32,16 @@ int				swap_b(t_pile *lst)
 	return (sb);
 }
 
-int				swap_s(t_pile *lst)
+int	swap_s(t_pile *lst)
 {
 	swap_a(lst);
 	swap_b(lst);
 	return (ss);
 }
 
-int				push_b(t_pile *lst)
+int	push_b(t_pile *lst)
 {
-	int			i;
+	int	i;
 
 	if (lst->max_a == 0)
 		return (-1);
@@ -63,9 +63,9 @@ int				push_b(t_pile *lst)
 	return (pb);
 }
 
-int				push_a(t_pile *lst)
+int	push_a(t_pile *lst)
 {
-	int			i;
+	int	i;
 
 	if (lst->max_b == 0)
 		return (-1);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   radixsort.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tamigore <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/24 14:59:04 by tamigore          #+#    #+#             */
+/*   Updated: 2021/11/02 16:46:47 by tamigore         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	get_max_bits(t_pile *lst)
@@ -35,7 +47,7 @@ static void	binary_sort(t_pile *lst, int bit)
 		put_res(lst, &push_a);
 }
 
-void	radixsort(t_pile *lst)
+void	radix_sort(t_pile *lst)
 {
 	int	bit;
 	int	max_bit;
