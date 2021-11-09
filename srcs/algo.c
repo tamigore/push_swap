@@ -18,26 +18,26 @@ void	mini_sort(t_pile *lst)
 	{
 		if (lst->a[1] == 2)
 		{
-			put_res(lst, &swap_a);
-			put_res(lst, &revers_a);
+			swap_a(lst);
+			revers_a(lst);
 		}
 	}
 	else if (lst->a[1] == 0)
 	{
 		if (lst->a[0] == 2)
-			put_res(lst, &revers_a);
+			revers_a(lst);
 		else
-			put_res(lst, &swap_a);
+			swap_a(lst);
 	}
 	else
 	{
 		if (lst->a[0] == 2)
 		{
-			put_res(lst, &swap_a);
-			put_res(lst, &rrevers_a);
+			swap_a(lst);
+			rrevers_a(lst);
 		}
 		else
-			put_res(lst, &rrevers_a);
+			rrevers_a(lst);
 	}
 }
 
@@ -70,28 +70,8 @@ void	get_unified_pile(t_pile *lst)
 	ft_bzero(lst->b, lst->max_a);
 }
 
-void	put_res(t_pile *lst, int (*fun)(t_pile *lst))
-{
-	int	i;
-
-	if (lst->index == BUFFER_SIZE - 1)
-	{
-		i = 0;
-		while (i < lst->index)
-		{
-			ft_putstr(revers_act(lst->res[i++]));
-			ft_putstr("\n");
-		}
-		lst->index = 0;
-		ft_bzero(lst->res, BUFFER_SIZE);
-	}
-	lst->res[lst->index++] = fun(lst);
-}
-
 void	solve(t_pile *lst)
 {
-	int	i;
-
 	get_unified_pile(lst);
 	if (check_all(lst))
 		return ;
@@ -101,13 +81,4 @@ void	solve(t_pile *lst)
 		sort(lst);
 	else
 		radix_sort(lst);
-	if (lst->index < BUFFER_SIZE)
-	{
-		i = 0;
-		while (i < lst->index)
-		{
-			ft_putstr(revers_act(lst->res[i++]));
-			ft_putstr("\n");
-		}
-	}
 }

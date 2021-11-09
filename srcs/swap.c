@@ -12,39 +12,39 @@
 
 #include "push_swap.h"
 
-int	swap_a(t_pile *lst)
+void	swap_a(t_pile *lst)
 {
 	int	tmp;
 
 	tmp = lst->a[0];
 	lst->a[0] = lst->a[1];
 	lst->a[1] = tmp;
-	return (sa);
+	ft_putstr("sa\n");
 }
 
-int	swap_b(t_pile *lst)
+void	swap_b(t_pile *lst)
 {
 	int	tmp;
 
 	tmp = lst->b[0];
 	lst->b[0] = lst->b[1];
 	lst->b[1] = tmp;
-	return (sb);
+	ft_putstr("sb\n");
 }
 
-int	swap_s(t_pile *lst)
+void	swap_s(t_pile *lst)
 {
 	swap_a(lst);
 	swap_b(lst);
-	return (ss);
+	ft_putstr("ss\n");
 }
 
-int	push_b(t_pile *lst)
+void	push_b(t_pile *lst)
 {
 	int	i;
 
 	if (lst->max_a == 0)
-		return (-1);
+		exit_free(lst, EXIT_FAILURE);
 	i = lst->max_b - 1;
 	while (i >= 0)
 	{
@@ -53,22 +53,22 @@ int	push_b(t_pile *lst)
 	}
 	i = 0;
 	lst->b[0] = lst->a[0];
-	while (i < lst->max_a)
+	while (i < lst->max_a - 1)
 	{
 		lst->a[i] = lst->a[i + 1];
 		i++;
 	}
 	lst->max_a--;
 	lst->max_b++;
-	return (pb);
+	ft_putstr("pb\n");
 }
 
-int	push_a(t_pile *lst)
+void	push_a(t_pile *lst)
 {
 	int	i;
 
 	if (lst->max_b == 0)
-		return (-1);
+		exit_free(lst, EXIT_FAILURE);
 	i = lst->max_a - 1;
 	while (i >= 0)
 	{
@@ -77,12 +77,12 @@ int	push_a(t_pile *lst)
 	}
 	i = 0;
 	lst->a[0] = lst->b[0];
-	while (i < lst->max_b)
+	while (i < lst->max_b - 1)
 	{
 		lst->b[i] = lst->b[i + 1];
 		i++;
 	}
 	lst->max_a++;
 	lst->max_b--;
-	return (pa);
+	ft_putstr("pa\n");
 }

@@ -16,21 +16,6 @@
 # include <stdlib.h>
 # include "libft.h"
 
-typedef enum s_act
-{
-	sa,
-	sb,
-	ss,
-	pa,
-	pb,
-	ra,
-	rb,
-	rr,
-	rra,
-	rrb,
-	rrr
-}	t_act;
-
 typedef struct s_pos
 {
 	int		check;
@@ -43,9 +28,7 @@ typedef struct s_pile
 	int				valid;
 	int				*a;
 	int				*b;
-	int				*res;
 	struct s_pos	pos;
-	int				index;
 	int				max_a;
 	int				max_b;
 }	t_pile;
@@ -54,27 +37,27 @@ typedef struct s_pile
 ** swap.c
 */
 
-int					swap_a(t_pile *lst);
-int					swap_b(t_pile *lst);
-int					swap_s(t_pile *lst);
-int					push_a(t_pile *lst);
-int					push_b(t_pile *lst);
+void				swap_a(t_pile *lst);
+void				swap_b(t_pile *lst);
+void				swap_s(t_pile *lst);
+void				push_a(t_pile *lst);
+void				push_b(t_pile *lst);
 
 /*
 ** revers.c
 */
 
-int					revers_a(t_pile *lst);
-int					revers_b(t_pile *lst);
-int					revers_r(t_pile *lst);
+void				revers_a(t_pile *lst);
+void				revers_b(t_pile *lst);
+void				revers_r(t_pile *lst);
 
 /*
 ** rrevers.c
 */
 
-int					rrevers_a(t_pile *lst);
-int					rrevers_b(t_pile *lst);
-int					rrevers_r(t_pile *lst);
+void				rrevers_a(t_pile *lst);
+void				rrevers_b(t_pile *lst);
+void				rrevers_r(t_pile *lst);
 
 /*
 ** algo.c
@@ -82,29 +65,18 @@ int					rrevers_r(t_pile *lst);
 
 void				get_unified_pile(t_pile *lst);
 void				solve(t_pile *lst);
-void				put_res(t_pile *lst, int (*fun)(t_pile *lst));
 
 /*
 ** check.c
 */
 
 int					check_all(t_pile *lst);
-int					check_pile(int *p, int max);
-int					check_revers_pile(int *p, int max);
-
-/*
-** omg_tri.c
-*/
-
-void				add_operation(t_pile *lst, int *op, int i);
-void				omg_tri(t_pile *lst);
 
 /*
 ** main.c
 */
 
-void				exit_err(t_pile *lst);
-char				*revers_act(int nb);
+void				exit_free(t_pile *lst, int ret);
 void				print_pile(t_pile *lst);
 
 /*

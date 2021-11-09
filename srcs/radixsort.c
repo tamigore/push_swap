@@ -35,16 +35,16 @@ static void	binary_sort(t_pile *lst, int bit)
 	while (len < lst->max_a)
 	{
 		if (((lst->a[0] >> bit) % 2) == 0)
-			put_res(lst, &push_b);
+			push_b(lst);
 		else
 		{
-			put_res(lst, &revers_a);
+			revers_a(lst);
 			len++;
 		}
 	}
 	len = 0;
 	while (len < lst->max_b)
-		put_res(lst, &push_a);
+		push_a(lst);
 }
 
 void	radix_sort(t_pile *lst)

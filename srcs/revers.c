@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	revers_a(t_pile *lst)
+void	revers_a(t_pile *lst)
 {
 	int	i;
 	int	tmp;
@@ -25,10 +25,10 @@ int	revers_a(t_pile *lst)
 		i++;
 	}
 	lst->a[i] = tmp;
-	return (ra);
+	ft_putstr("ra\n");
 }
 
-int	revers_b(t_pile *lst)
+void	revers_b(t_pile *lst)
 {
 	int	i;
 	int	tmp;
@@ -41,12 +41,12 @@ int	revers_b(t_pile *lst)
 		i++;
 	}
 	lst->b[i] = tmp;
-	return (rb);
+	ft_putstr("rb\n");
 }
 
-int	revers_r(t_pile *lst)
+void	revers_r(t_pile *lst)
 {
 	revers_a(lst);
 	revers_b(lst);
-	return (rr);
+	ft_putstr("rr\n");
 }

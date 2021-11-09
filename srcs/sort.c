@@ -17,25 +17,25 @@ static void	track_b_up(t_pile *lst, int *min)
 	while (lst->b[0] != *min && lst->b[1] != *min && lst->max_b)
 	{
 		if (lst->pos.y == 0 && lst->pos.check)
-			put_res(lst, &revers_b);
+			revers_b(lst);
 		lst->pos.y--;
-		put_res(lst, &push_a);
+		push_a(lst);
 	}
 	if (lst->b[0] == *min)
 	{
-		put_res(lst, &push_a);
-		put_res(lst, &revers_a);
+		push_a(lst);
+		revers_a(lst);
 		if (lst->pos.check)
-			put_res(lst, &rrevers_b);
+			rrevers_b(lst);
 		(*min)++;
 	}
 	else if (lst->b[1] == *min)
 	{
-		put_res(lst, &swap_b);
-		put_res(lst, &push_a);
-		put_res(lst, &revers_a);
+		swap_b(lst);
+		push_a(lst);
+		revers_a(lst);
 		if (lst->pos.check)
-			put_res(lst, &rrevers_b);
+			rrevers_b(lst);
 		(*min)++;
 	}
 }
@@ -48,17 +48,17 @@ static void	track_b(t_pile *lst, int *min)
 		{
 			if (lst->pos.y == 0 && lst->pos.check)
 			{
-				put_res(lst, &rrevers_b);
-				put_res(lst, &push_a);
+				rrevers_b(lst);
+				push_a(lst);
 			}
 			lst->pos.y--;
-			put_res(lst, &rrevers_b);
+			rrevers_b(lst);
 		}
 		if (lst->b[lst->max_b - 1] == *min)
 		{
-			put_res(lst, &rrevers_b);
-			put_res(lst, &push_a);
-			put_res(lst, &revers_a);
+			rrevers_b(lst);
+			push_a(lst);
+			revers_a(lst);
 			(*min)++;
 		}
 	}
@@ -72,21 +72,21 @@ static void	track_a_up(t_pile *lst, int *min)
 	{
 		if (lst->pos.check)
 		{
-			put_res(lst, &rrevers_a);
-			put_res(lst, &swap_a);
+			rrevers_a(lst);
+			swap_a(lst);
 		}
-		put_res(lst, &revers_a);
+		revers_a(lst);
 		(*min)++;
 	}
 	else if (lst->a[1] == *min)
 	{
-		put_res(lst, &swap_a);
+		swap_a(lst);
 		if (lst->pos.check)
 		{
-			put_res(lst, &rrevers_a);
-			put_res(lst, &swap_a);
+			rrevers_a(lst);
+			swap_a(lst);
 		}
-		put_res(lst, &revers_a);
+		revers_a(lst);
 		(*min)++;
 	}
 }
@@ -96,8 +96,8 @@ static void	track_a(t_pile *lst, int *min)
 	while (lst->a[0] != *min && lst->a[1] != *min && lst->max_a)
 	{
 		if (lst->pos.y == 0 && lst->pos.check)
-			put_res(lst, &revers_a);
-		put_res(lst, &push_b);
+			revers_a(lst);
+		push_b(lst);
 		lst->pos.y--;
 	}
 	track_a_up(lst, min);

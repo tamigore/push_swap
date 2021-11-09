@@ -6,7 +6,7 @@
 #    By: tamigore <tamigore@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/19 16:16:11 by tamigore          #+#    #+#              #
-#    Updated: 2021/10/24 18:31:56 by tamigore         ###   ########.fr        #
+#    Updated: 2021/11/09 11:43:03 by tamigore         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ SRCS = $(addprefix $(DIR_S),$(SOURCES))
 
 OBJS = $(SRCS:.c=.o)
 
-CFLAGS = -Wall -Werror -Wextra -I $(HEADER)
+CFLAGS = -Wall -Werror -Wextra -I $(HEADER) -g -fsanitize=address
 
 FLAGS = -L $(LIBFT) -lft
 

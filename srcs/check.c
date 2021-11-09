@@ -27,33 +27,3 @@ int	check_all(t_pile *lst)
 	}
 	return (1);
 }
-
-int	check_pile(int *p, int max)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = p[0];
-	while (i < max)
-	{
-		if (p[i] != j++)
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-int	check_revers_pile(int *p, int max)
-{
-	int	j;
-
-	j = p[max];
-	while (max > 0)
-	{
-		if (p[max] != j--)
-			return (0);
-		max--;
-	}
-	return (1);
-}
